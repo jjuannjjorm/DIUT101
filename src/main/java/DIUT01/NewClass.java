@@ -17,28 +17,23 @@ import org.apache.commons.cli.ParseException;
  */
 public class NewClass {
     public static void main(String[] args) throws ParseException {
-        //Sirve para meter datos por consola
-        args = new String[]{"-y"};
-        // create Options object
+        args = new String[]{"-n"};
         Options options = new Options();
     
-        options.addOption("w", false, "Hola");          options.addOption("c", false, "Buenas tardes");
-        options.addOption("n", false, "Fecha");   options.addOption("h", false, "Hola mundo");
-        options.addOption("y", false, "Buenos dias");
+        options.addOption("w", false, "Hola Mundo");          options.addOption("c", false, "Hola mundo cruel");
+        options.addOption("n", false, "Hola mundo bonito");   options.addOption("h", false, "Help");
+        options.addOption("y", false, "Años");
         
         
         
         CommandLineParser parser = (CommandLineParser) new org.apache.commons.cli.DefaultParser();
         CommandLine cmd = parser.parse(options, args);
 
-        if (cmd.hasOption("w"))      System.out.println("Hola");
-        else if (cmd.hasOption("c")) System.out.println("Buenas tardes");
-        else if (cmd.hasOption("n")) {
-            DateFormat myFormat = DateFormat.getDateInstance( DateFormat.LONG, Locale.ENGLISH );
-           System.out.println(DateFormat.DATE_FIELD);
-        } else if (cmd.hasOption("h")) System.out.println("Hola mundo");
-        else if (cmd.hasOption("y")) System.out.println("Buenos dias");
-        else System.err.getClass();
+        if      (cmd.hasOption("w"))    System.out.println("Hola Mundo");
+        else if (cmd.hasOption("c"))    System.out.println("Buenas tardes");
+        else if (cmd.hasOption("n"))    System.out.println("Hola mundo bonito");
+        else if (cmd.hasOption("h"))    System.out.println("Has seleccionado ayuda, esto es muy facil de usar, pulsa -w, -n, -c & -y para diferentes opciones ");
+        else if (cmd.hasOption("y"))    System.out.println("Tras "+ args +" años de vida");
         
     
 }
